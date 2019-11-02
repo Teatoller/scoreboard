@@ -1,27 +1,27 @@
-function Header() {
+function Header(props) {
   return (
     <header>
-      <h1>Scoreboard</h1>
-      <span className="stats">Players: 1</span>
+      <h1>{props.title}</h1>
+      <span className="stats">Players: {props.totalPlayers}</span>
     </header>
   );
 }
 
-function Counter() {
+function Counter(props) {
   return (
     <div className="counter">
       <button className="counter-action decrement">-</button>
-      <span className="counter-score">35</span>
+      <span className="counter-score">{props.score}</span>
       <button className="counter-action increment">+</button>
     </div>
   );
 }
 
-function Player() {
+function Player(props) {
   return (
     <div className="player">
-      <span className="player-name">Steven</span>
-      <Counter />
+      <span className="player-name">{props.playerName}</span>
+      <Counter score={props.playerScore} />
     </div>
   );
 }
@@ -29,8 +29,14 @@ function Player() {
 function App() {
   return (
     <div className="scoreboard">
-      <Header />
-      <Player />
+      <Header title="scoreboard" totalPlayers={1} />
+
+      {/* Player list */}
+      <Player playerName="Steven" playerScore={30} />
+      <Player playerName="Jane" playerScore={60} />
+      <Player playerName="Denzel" playerScore={80} />
+      <Player playerName="Nigel" playerScore={75} />
+      <Player playerName="Fay" playerScore={45} />
     </div>
   );
 }
